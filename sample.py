@@ -1,8 +1,9 @@
+import time
+
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 from airflow.utils.dates import days_ago
 from airflow.models import Variable
-from modelTestCI.dags.helper_functions.cpu_stress_time import execute
 
 default_args = {
     'owner': 'Felipe Test',
@@ -24,7 +25,7 @@ with DAG(dag_id='std_simple_sample', schedule_interval=None,
     
     task = PythonOperator(
         task_id='std_simple_sample_task',
-        python_callable=execute,
+        python_callable=time.sleep(60),
         op_args=[20,timetask],
         start_date=days_ago(0),
         owner='airflow',
