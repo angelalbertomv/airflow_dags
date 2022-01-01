@@ -25,7 +25,7 @@ with DAG(dag_id='std_simple_sample', schedule_interval=None,
     
     task = PythonOperator(
         task_id='std_simple_sample_task',
-        python_callable=time.sleep(60),
+        python_callable=time.sleep(1),
         start_date=days_ago(0),
         owner='airflow',
         executor_config = resource_config
